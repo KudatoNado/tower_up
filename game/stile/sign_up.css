@@ -1,0 +1,42 @@
+body{
+    background-image: url(../img/image.png) ;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 15%;
+}
+.center{
+  text-align: center;
+}
+.glavnoe{
+    background-color: rgb(74, 255, 219);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    
+  }
+
+  .front_code{
+    display: flex;
+    flex-direction: column;
+    padding-top: 45px; 
+  }
+
+  .login_form {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+  }
+
+.login_form_buttons_group {
+  display: flex;
+  gap: 10px;
+}
+
+.button {
+  padding: 10px 15px;
+  border-radius: 15px;
+  border: 1px solid rgb(126, 126, 120);
+  background-color: #fff;
+  color: #000;
+}

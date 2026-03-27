@@ -59,3 +59,7 @@ ctx.stroke();
 
 // pridumac normalnyj pol 
 //otrisovac ne poluczilos
+
+
+
+

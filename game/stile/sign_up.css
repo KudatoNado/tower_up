@@ -2,41 +2,44 @@ body{
     background-image: url(../img/image.png) ;
     background-size: cover;
     background-attachment: fixed;
-    padding: 15%;
-
+    display: flex;
+    justify-content: center;
     
-    
+    padding: 150px 0;
+    margin: 0 auto;
 }
 .center{
   text-align: center;
 }
 .glavnoe{
+  
     /* background-color: rgb(74, 255, 219);
     display: flex;
     justify-content: space-around;
     align-items: center;
     gap: 20px; */
     display: flex;
-    max-width: 1000px;
-    margin: 40px auto;
+   padding: 0 40px;
     background: white;
     border-radius: 16px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
+    
     
   }
-  .front_img
+  /* .front_img
   {
   flex: 1;
-  padding: 32px;
-  }
+  padding: 0px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 0px; */
+  
+  /* } */
   .front_code{
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    flex: 1;
-    padding: 32px;
-    padding-top: 2px;
+    padding: 20px 0;
     
   }
 
@@ -79,8 +82,15 @@ body{
 
 .rovny_area{
   display: flex;
-  border-radius: 40px;
   
+  border-radius: 40px;
+  justify-content: center
+}
+
+.cell {
+  padding-left: 10px;
+  color:blueviolet;
+  border-radius: 40px;
 }
 
 

@@ -3,8 +3,14 @@ canvas{
         display: block;
         margin: 0 auto;
         border:1px solid #000; 
-        background-image: url(../img/block.png); 
-            background-size: 200%;
+        
+        background-size: 200%;
         background-position: center;
    
+}
+
+body{
+    background-image: url(../img/image.png) ;
+    background-size: cover;
+    background-attachment: fixed;  
 }

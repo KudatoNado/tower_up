@@ -99,7 +99,7 @@ body{
   justify-content: center
 }
 .kostyl{
-  padding-left: 25px;
+  padding-left: 22px;
 }
 
 .cell {
@@ -116,7 +116,7 @@ body{
       /* position: absolute;
     top: 1.4rem;
     right: 0; */
-    text-indent: -85px;
+    text-indent: -53px;
     line-height: 1;
     /* pointer-events: auto;
     z-index: 5;

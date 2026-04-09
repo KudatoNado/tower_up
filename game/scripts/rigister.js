@@ -10,4 +10,4 @@ text.addEventListener('click', function () {
     this.textContent = type === 'password' ? '◡' : '👁';
 });
 
-const clear = 
+// const clear = 

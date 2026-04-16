@@ -64,34 +64,106 @@ const ctx = canvas.getContext("2d");
 
 
 
-const img = new Image();
-img.src = "../game/img/block.png"; 
+// const img = new Image();
+// img.src = "../game/img/nps/dino01.png"; 
 
-let y = 0; 
-const speed = 2; 
+// let y = 0; 
+// const speed = 2; 
 
-img.onload = function() {
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height); 
+// img.onload = function() {
+//   function animate() {
+//     ctx.clearRect(0, 0, canvas.width, canvas.height); 
 
-    ctx.drawImage(img, 0, y, canvas.width, canvas.height);
-    ctx.drawImage(img, 0, y - canvas.height, canvas.width, canvas.height);
+//     ctx.drawImage(img, 0, y, canvas.width, canvas.height);
+//     ctx.drawImage(img, 0, y - canvas.height, canvas.width, canvas.height);
 
-    y += speed; 
-    if (y >= canvas.height) y = 0; 
+//     y += speed; 
+//     if (y >= canvas.height) y = 0; 
 
-    requestAnimationFrame(animate); 
-  }
-  animate();
-};
+//     requestAnimationFrame(animate); 
+//   }
+//   animate();
+// };
 
-
-// img.src = "../game/img/nps/dino01.png";
+// const player =new Image()
+// player.src = "../game/img/nps/dino01.png";
 
 
 // img.onload = () => {
 //   ctx.drawImage(img, 0, 0);
 // };
+
+// const canvas = document.getElementById("gameCanvas");
+// const ctx = canvas.getContext("2d");
+
+const bgImg = new Image();
+const dinoImg = new Image();
+
+let y = 0;
+let speed = 2;
+
+//start, size nip
+let playerX = 200;
+let playerY = 350;
+let playerWidth = 100;
+let playerHeight = 180;
+
+let bgLoaded = false;
+let dinoLoaded = false;
+
+bgImg.src = "../game/img/block.png"; 
+dinoImg.src = "../game/img/nps/dino01.png"; 
+
+bgImg.onload = () => {
+  bgLoaded = true;
+  startGame();
+};
+
+dinoImg.onload = () => {
+  dinoLoaded = true;
+  startGame();
+};
+
+function startGame() {
+  if (!bgLoaded || !dinoLoaded) return;
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    
+    ctx.drawImage(bgImg, 0, y, canvas.width, canvas.height);
+    ctx.drawImage(bgImg, 0, y - canvas.height, canvas.width, canvas.height);
+
+    y += speed;
+    if (y >= canvas.height) y = 0;
+
+    
+    ctx.drawImage(dinoImg, playerX, playerY, playerWidth, playerHeight);
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+}
+
+document.addEventListener("keydown", (e) => {
+  const step = 15;
+
+  if (e.key === "ArrowLeft") playerX -= step;
+  if (e.key === "ArrowRight") playerX += step;
+  if (e.key === "ArrowUp") playerY -= step;
+  if (e.key === "ArrowDown") playerY += step;
+
+  
+  if (playerX < 0) playerX = 0;
+  if (playerY < 0) playerY = 0;
+  if (playerX + playerWidth > canvas.width) {
+    playerX = canvas.width - playerWidth;
+  }
+  if (playerY + playerHeight > canvas.height) {
+    playerY = canvas.height - playerHeight;
+  }
+});
 
 
 

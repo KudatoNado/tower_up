@@ -1,11 +1,12 @@
 let player =[{
-    name: "",
+    name: "EmoHog",
     hp:true,
     position_x: 0,
     position_y: 0,
     speed: 1,
-    skin:"../",
-}];
+    skin:"game\img\nps\dino01.png",
+}
+];
 
 let enemy =[
 {

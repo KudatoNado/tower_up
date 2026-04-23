@@ -5,6 +5,9 @@ const ctx = canvas.getContext("2d");
 const bgImg = new Image();
 const dinoImg = new Image();
 
+let czeker = true;/*naczalo igry nie zabidz izmenit "true" na "false"*/
+let sczet = 0;
+
 let y = 0;
 let speed = 1;
 
@@ -85,6 +88,15 @@ document.addEventListener("keydown", (e) => {
   
 });
 
+
+
+
+
+let timerId = setInterval(() => {
+  if(czeker){
+  console.log(1)
+  };
+}, 1500);
 
 
 

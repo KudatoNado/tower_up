@@ -1,5 +1,7 @@
 const text = document.querySelector('#text');
 const password = document.querySelector('#password');
+const cancelButon = document.getElementById("cancel");
+const loginForm = document.getElementById('login_form');
 
 text.addEventListener('click', function () {
 
@@ -10,4 +12,8 @@ text.addEventListener('click', function () {
     this.textContent = type === 'password' ? '◡' : '👁';
 });
 
-// const clear = 
+
+ cancelButon = loginForm.reset();
+ cancelButon.addEventListener('click', function(){
+     
+ })

@@ -6,7 +6,7 @@ const bgImg = new Image();
 const dinoImg = new Image();
 
 let czeker = true;/*naczalo igry nie zabidz izmenit "true" na "false"*/
-let sczet = 0;
+
 
 let y = 0;
 let speed = 1;
@@ -92,20 +92,31 @@ document.addEventListener("keydown", (e) => {
 
 
 
+
+
+
+const main_block = document.getElementById("ara");
+
+const sczot = document.getElementById("cyfra")
+sczot.appendChild.main_block;
+
+let points = 0;
+
+function updt() {
+  points++;
+  sczot.textContent =`${points.toString()}`;
+  console.log(points);
+}
+
+updt();
+
 let timerId = setInterval(() => {
   if(czeker){
-  console.log(1)
+    points++
+  
+  sczot.textContent =`${points.toString()}`;
+
   };
-}, 1500);
-
-
-
-
-
-
-
-
-
-
+}, 1000);
 
 

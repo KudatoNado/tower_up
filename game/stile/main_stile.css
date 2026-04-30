@@ -39,3 +39,12 @@ body{
     z-index: 10; /* Поднимает канвас над фоном */
     background: transparent; /* Оставляем прозрачным */
 }
+
+
+
+.cyfra{
+    color: seashell;
+    font-size: 100px;
+    display: flex;
+    justify-content: center;
+}

@@ -2,40 +2,66 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 
+const main_block = document.getElementById("ara");
+const sczot = document.getElementById("cyfra");
+
+
+//const img
 const bgImg = new Image();
 const dinoImg = new Image();
+const stoneImg = new Image();
+//cons img
+
+
+//img
+bgImg.src = "../game/img/block1.png"; 
+dinoImg.src = "../game/img/nps/dino01.png"; 
+stoneImg.src = "../game/img/stone.png";
+//img
+
+
+let y_vnie = -100; 
+let stoneX = 0; 
+let showSecondStone = false; 
+let secondStoneFinished = false;
+
+setTimeout(() => {
+    showSecondStone = true;
+}, 1000);
+
+
+
 
 let czeker = true;/*naczalo igry nie zabidz izmenit "true" na "false"*/
+let points = 0;
 
-
+//const speed
 let y = 0;
 let speed = 1;
+//cons speed
+
 
 //start, size nip
 let playerX = 0;
 let playerY = 600;
 let playerWidth = 200;
 let playerHeight = 280;
+//start, size nip
 
 
-
+//key
 let bgLoaded = false;
 let dinoLoaded = false;
-
-bgImg.src = "../game/img/block1.png"; 
-dinoImg.src = "../game/img/nps/dino01.png"; 
 
 bgImg.onload = () => {
   bgLoaded = true;
   dinoLoaded = true;
   startGame();
 };
+//key
 
-// dinoImg.onload = () => {
-//   dinoLoaded = true;
-//   startGame();
-// };
 
+//main
 function startGame() {
   if (!bgLoaded || !dinoLoaded) return;
 
@@ -51,13 +77,18 @@ function startGame() {
 
     
     ctx.drawImage(dinoImg, playerX, playerY, playerWidth, playerHeight);
-
+    stone();
+    stone();
+    
     requestAnimationFrame(animate);
   }
 
   animate();
 }
+//main
 
+
+//awsd
 document.addEventListener("keydown", (e) => {
   const step_x = 570;
   const step_y = 150;
@@ -87,6 +118,7 @@ document.addEventListener("keydown", (e) => {
   }
   
 });
+//awsd
 
 
 
@@ -94,22 +126,14 @@ document.addEventListener("keydown", (e) => {
 
 
 
-
-const main_block = document.getElementById("ara");
-
-const sczot = document.getElementById("cyfra")
+//sczet
 sczot.appendChild.main_block;
-
-let points = 0;
-
 function updt() {
   points++;
   sczot.textContent =`${points.toString()}`;
   console.log(points);
 }
-
 updt();
-
 let timerId = setInterval(() => {
   if(czeker){
     points++
@@ -118,5 +142,32 @@ let timerId = setInterval(() => {
 
   };
 }, 1000);
+//sczet
+
+
+
+//stone animation
+function stone() { 
+    if (showSecondStone && !secondStoneFinished){
+    // if (showSecondStone) { 
+        ctx.drawImage(stoneImg, stoneX, y_vnie, 200, 200); 
+        y_vnie += speed + 2; 
+
+        if (y_vnie > canvas.height) { 
+            secondStoneFinished = true; 
+        } 
+        // if (y_vnie > canvas.height) { 
+        //     y_vnie = -100; 
+  
+        // } 
+        secondStoneFinished = false; 
+        
+    } 
+}
+
+
+
+
+
 
 

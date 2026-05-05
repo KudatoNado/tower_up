@@ -28,6 +28,7 @@ let secondStoneFinished = false;
 setTimeout(() => {
     showSecondStone = true;
 }, 1000);
+const random_bool = 0;
 
 
 
@@ -60,12 +61,7 @@ bgImg.onload = () => {
 };
 //key
 
-
-//main
-function startGame() {
-  if (!bgLoaded || !dinoLoaded) return;
-
-  function animate() {
+function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     
@@ -77,13 +73,22 @@ function startGame() {
 
     
     ctx.drawImage(dinoImg, playerX, playerY, playerWidth, playerHeight);
-    stone();
-    stone();
+    
+       
     
     requestAnimationFrame(animate);
   }
+//main
+function startGame() {
+  if (!bgLoaded || !dinoLoaded) return;
+
+  
 
   animate();
+
+  // setInterval(()=>{},3000); 
+  // random_bool = Math.random()<0.5;
+  stone(random_bool)
 }
 //main
 
@@ -147,22 +152,37 @@ let timerId = setInterval(() => {
 
 
 //stone animation
-function stone() { 
+function stone(random_bool) { 
+  
+
     if (showSecondStone && !secondStoneFinished){
     
         ctx.drawImage(stoneImg, dengerX, y_vnie, 200, 200); 
-        y_vnie += speed + 2; 
+        y_vnie += speed + 5; 
+
+        
+        if(random_bool){
+          dengerX =0;
+        }else
+        {
+          dengerX = 370;
+        }
 
         if (y_vnie > canvas.height) { 
             secondStoneFinished = true; 
         } 
-        // if (y_vnie > canvas.height) { 
-        //     y_vnie = -100; 
+        if (y_vnie > canvas.height) { 
+            y_vnie = -100; 
   
-        // } 
-        secondStoneFinished = false; 
+        } 
         
+
+        secondStoneFinished = false; 
+
+        console.log("Kаmen poshel!!!!!!!")
     } 
+    random_bool = Math.random()<0.5;
+    requestAnimationFrame(stone);
 }
 
 

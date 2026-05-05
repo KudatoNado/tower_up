@@ -16,12 +16,12 @@ const stoneImg = new Image();
 //img
 bgImg.src = "../game/img/block1.png"; 
 dinoImg.src = "../game/img/nps/dino01.png"; 
-stoneImg.src = "../game/img/stone.png";
+stoneImg.src = "../game/img/black_border_stone.png";
 //img
 
 
 let y_vnie = -100; 
-let stoneX = 0; 
+let dengerX = 0; 
 let showSecondStone = false; 
 let secondStoneFinished = false;
 
@@ -149,8 +149,8 @@ let timerId = setInterval(() => {
 //stone animation
 function stone() { 
     if (showSecondStone && !secondStoneFinished){
-    // if (showSecondStone) { 
-        ctx.drawImage(stoneImg, stoneX, y_vnie, 200, 200); 
+    
+        ctx.drawImage(stoneImg, dengerX, y_vnie, 200, 200); 
         y_vnie += speed + 2; 
 
         if (y_vnie > canvas.height) { 
@@ -164,6 +164,8 @@ function stone() {
         
     } 
 }
+
+
 
 
 

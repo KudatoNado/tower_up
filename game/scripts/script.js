@@ -22,13 +22,14 @@ stoneImg.src = "../game/img/black_border_stone.png";
 
 let y_vnie = -100; 
 let dengerX = 0; 
+let dengerXa = 370; 
 let showSecondStone = false; 
 let secondStoneFinished = false;
 
 setTimeout(() => {
     showSecondStone = true;
 }, 1000);
-const random_bool = 0;
+const random_bool = false;
 
 
 
@@ -86,9 +87,39 @@ function startGame() {
 
   animate();
 
-  // setInterval(()=>{},3000); 
-  // random_bool = Math.random()<0.5;
-  stone(random_bool)
+  
+  setInterval(()=>{ },1000); 
+  
+  stone_l();
+  stone();
+
+
+
+
+
+//   while(true)
+//   {
+//     if (showSecondStone && !secondStoneFinished){
+
+//     if (y_vnie > canvas.height) { 
+//     secondStoneFinished = true;
+//     y_vnie = -100;
+      
+//     random_bool = Math.random()<0.5;
+
+//     if(random_bool){
+//       stone;
+//     }else
+//     {
+//       stone_l;
+//     }
+
+//   }
+// }
+
+
+    
+// }
 }
 //main
 
@@ -152,21 +183,23 @@ let timerId = setInterval(() => {
 
 
 //stone animation
-function stone(random_bool) { 
+function stone() { 
   
 
     if (showSecondStone && !secondStoneFinished){
     
         ctx.drawImage(stoneImg, dengerX, y_vnie, 200, 200); 
-        y_vnie += speed + 5; 
+        y_vnie += speed +1 ; 
 
-        
-        if(random_bool){
-          dengerX =0;
-        }else
-        {
-          dengerX = 370;
-        }
+        // random_bool = Math.random()<0.5;
+        // random_bool = true;
+
+        // if(random_bool){
+        //   dengerX =0;
+        // }else
+        // {
+        //   dengerX = 370;
+        // }
 
         if (y_vnie > canvas.height) { 
             secondStoneFinished = true; 
@@ -180,9 +213,39 @@ function stone(random_bool) {
         secondStoneFinished = false; 
 
         console.log("Kаmen poshel!!!!!!!")
+        
     } 
-    random_bool = Math.random()<0.5;
+   
     requestAnimationFrame(stone);
+}
+
+
+
+function stone_l() { 
+  
+
+  if (showSecondStone && !secondStoneFinished){
+  
+      ctx.drawImage(stoneImg, dengerXa, y_vnie, 200, 200); 
+      y_vnie += speed +1; 
+
+      
+
+      if (y_vnie > canvas.height) { 
+          secondStoneFinished = true; 
+      } 
+      if (y_vnie > canvas.height) { 
+          y_vnie = -100; 
+
+      } 
+      
+
+      secondStoneFinished = false; 
+
+      console.log("Kа")
+  } 
+ 
+  requestAnimationFrame(stone_l);
 }
 
 

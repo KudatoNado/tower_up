@@ -21,6 +21,7 @@ stoneImg.src = "../game/img/black_border_stone.png";
 
 
 let y_vnie = -100; 
+let y_vnie_R = -100;
 let dengerX = 0; 
 let dengerXa = 370; 
 let showSecondStone = false; 
@@ -32,6 +33,7 @@ setTimeout(() => {
 const random_bool = false;
 
 
+let isGameOver = false;
 
 
 let czeker = true;/*naczalo igry nie zabidz izmenit "true" na "false"*/
@@ -63,6 +65,9 @@ bgImg.onload = () => {
 //key
 
 function animate() {
+   speed += 0.001;
+
+   if (isGameOver) return;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     
@@ -72,13 +77,24 @@ function animate() {
     y+= speed;
     if (y >= canvas.height) y = 0;
 
+
+    stone_l();
+  stone();
+
     
     ctx.drawImage(dinoImg, playerX, playerY, playerWidth, playerHeight);
     
        
+ checkCollision();
+
     
     requestAnimationFrame(animate);
+
+    
   }
+
+
+
 //main
 function startGame() {
   if (!bgLoaded || !dinoLoaded) return;
@@ -90,11 +106,10 @@ function startGame() {
   
   setInterval(()=>{ },1000); 
   
-  stone_l();
-  stone();
+  
 
 
-
+   
 
 
 //   while(true)
@@ -124,9 +139,15 @@ function startGame() {
 //main
 
 
+
+//game over
+ 
+
+
+
 //awsd
 document.addEventListener("keydown", (e) => {
-  const step_x = 570;
+  const step_x = 370;
   const step_y = 150;
 
   if (e.key === "ArrowLeft") 
@@ -153,6 +174,24 @@ document.addEventListener("keydown", (e) => {
     playerY = canvas.height - playerHeight;
   }
   
+
+
+
+  if (e.key === "Enter" && isGameOver) {
+        isGameOver = false; 
+        czeker = true;   
+        points = 0;         
+        speed = 1;         
+        y_vnie = -100;     
+        y_vnie_R = -100;    
+        playerX = 0;        
+        playerY = 600;
+        
+        animate();          
+        return;             
+    }
+
+
 });
 //awsd
 
@@ -183,76 +222,76 @@ let timerId = setInterval(() => {
 
 
 //stone animation
-function stone() { 
-  
+function stone() {
+    if (showSecondStone) {
+        ctx.drawImage(stoneImg, dengerX, y_vnie, 200, 200);
+        y_vnie += speed + 0.8;
+        if (y_vnie > canvas.height) {
+            y_vnie = -100;
+        }
+    }
+}
 
-    if (showSecondStone && !secondStoneFinished){
+
+
+function stone_l() {
+    if (showSecondStone) {
+        
+        ctx.drawImage(stoneImg, dengerXa, y_vnie_R, 200, 200);
+        y_vnie_R += speed + 3;
+        if (y_vnie_R > canvas.height) {
+            y_vnie_R = -100;
+        }
+    }
+}
+
+
+
+
+
+//stop
+function checkCollision() {
+    let hitZone = 110; // Высота попадания
+
+    // Левый камень
+    if (playerX === 0) {
+        if (y_vnie + hitZone > playerY && y_vnie < playerY + playerHeight - 50) {
+            endGame();
+        }
+    }
+
+    // Правый камень (теперь проверяем 370 и y_vnie_R)
+    if (playerX === 370) { 
+        if (y_vnie_R + hitZone > playerY && y_vnie_R < playerY + playerHeight - 50) {
+            endGame();
+        }
+    }
+}
+
+function endGame() {
+    isGameOver = true;
+    czeker = false;
+    speed = 0;
     
-        ctx.drawImage(stoneImg, dengerX, y_vnie, 200, 200); 
-        y_vnie += speed +1 ; 
-
-        // random_bool = Math.random()<0.5;
-        // random_bool = true;
-
-        // if(random_bool){
-        //   dengerX =0;
-        // }else
-        // {
-        //   dengerX = 370;
-        // }
-
-        if (y_vnie > canvas.height) { 
-            secondStoneFinished = true; 
-        } 
-        if (y_vnie > canvas.height) { 
-            y_vnie = -100; 
-  
-        } 
-        
-
-        secondStoneFinished = false; 
-
-        console.log("Kаmen poshel!!!!!!!")
-        
-    } 
-   
-    requestAnimationFrame(stone);
+    // Рисуем надпись, чтобы убедиться, что сработало
+    ctx.fillStyle = "white";
+    ctx.font = "bold 40px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText("Game over!", canvas.width / 2, canvas.height / 2);
 }
 
 
 
-function stone_l() { 
-  
-
-  if (showSecondStone && !secondStoneFinished){
-  
-      ctx.drawImage(stoneImg, dengerXa, y_vnie, 200, 200); 
-      y_vnie += speed +1; 
-
-      
-
-      if (y_vnie > canvas.height) { 
-          secondStoneFinished = true; 
-      } 
-      if (y_vnie > canvas.height) { 
-          y_vnie = -100; 
-
-      } 
-      
-
-      secondStoneFinished = false; 
-
-      console.log("Kа")
-  } 
- 
-  requestAnimationFrame(stone_l);
+function resetGame() {
+    isGameOver = false;
+    czeker = true;
+    points = 0;
+    speed = 1;
+    y_vnie = -100;
+    y_vnie_R = -100;
+    playerX = 0;
+    playerY = 600;
+    
+    sczot.textContent = "0";
+    animate(); // Запускаем цикл заново
 }
-
-
-
-
-
-
-
-
-

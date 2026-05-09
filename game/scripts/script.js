@@ -251,7 +251,7 @@ function stone_l() {
 
 //stop
 function checkCollision() {
-    let hitZone = 110; // Высота попадания
+    let hitZone = 110; 
 
     // Левый камень
     if (playerX === 0) {
@@ -260,7 +260,7 @@ function checkCollision() {
         }
     }
 
-    // Правый камень (теперь проверяем 370 и y_vnie_R)
+    
     if (playerX === 370) { 
         if (y_vnie_R + hitZone > playerY && y_vnie_R < playerY + playerHeight - 50) {
             endGame();
@@ -273,7 +273,7 @@ function endGame() {
     czeker = false;
     speed = 0;
     
-    // Рисуем надпись, чтобы убедиться, что сработало
+    
     ctx.fillStyle = "white";
     ctx.font = "bold 40px Arial";
     ctx.textAlign = "center";
@@ -293,5 +293,4 @@ function resetGame() {
     playerY = 600;
     
     sczot.textContent = "0";
-    animate(); // Запускаем цикл заново
-}
+    animate(); }

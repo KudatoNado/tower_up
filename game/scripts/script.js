@@ -19,18 +19,18 @@ dinoImg.src = "../game/img/nps/dino01.png";
 stoneImg.src = "../game/img/black_border_stone.png";
 //img
 
-
+//stone_position
 let y_vnie = -100; 
 let y_vnie_R = -100;
 let dengerX = 0; 
 let dengerXa = 370; 
-let showSecondStone = false; 
+let showSecondStone = true; 
 let secondStoneFinished = false;
+//stone_position
 
-setTimeout(() => {
-    showSecondStone = true;
-}, 1000);
-const random_bool = false;
+    
+
+let random_bool = false;
 
 
 let isGameOver = false;
@@ -57,6 +57,8 @@ let playerHeight = 280;
 let bgLoaded = false;
 let dinoLoaded = false;
 
+//key
+
 bgImg.onload = () => {
   bgLoaded = true;
   dinoLoaded = true;
@@ -78,8 +80,9 @@ function animate() {
     if (y >= canvas.height) y = 0;
 
 
-    stone_l();
-  stone();
+  //   stone_l();
+  // stone();
+    stone_random()
 
     
     ctx.drawImage(dinoImg, playerX, playerY, playerWidth, playerHeight);
@@ -225,10 +228,8 @@ let timerId = setInterval(() => {
 function stone() {
     if (showSecondStone) {
         ctx.drawImage(stoneImg, dengerX, y_vnie, 200, 200);
-        y_vnie += speed + 0.8;
-        if (y_vnie > canvas.height) {
-            y_vnie = -100;
-        }
+        y_vnie += speed + 5;
+        
     }
 }
 
@@ -238,10 +239,8 @@ function stone_l() {
     if (showSecondStone) {
         
         ctx.drawImage(stoneImg, dengerXa, y_vnie_R, 200, 200);
-        y_vnie_R += speed + 3;
-        if (y_vnie_R > canvas.height) {
-            y_vnie_R = -100;
-        }
+        y_vnie_R += speed + 5;
+        
     }
 }
 
@@ -282,7 +281,8 @@ function endGame() {
 
 
 
-function resetGame() {
+  function resetGame()
+ {
     isGameOver = false;
     czeker = true;
     points = 0;
@@ -293,4 +293,27 @@ function resetGame() {
     playerY = 600;
     
     sczot.textContent = "0";
-    animate(); }
+    animate(); 
+  }
+
+
+
+
+function stone_random(){
+   if (!showSecondStone) return;
+
+   if (random_bool){
+    stone();
+   }else{
+    stone_l();
+   }
+
+
+   if (y_vnie > canvas.height || y_vnie_R > canvas.height) {
+        y_vnie = -100;  
+        y_vnie_R = -100;
+        
+        random_bool = Math.random() < 0.5; 
+    }
+
+}

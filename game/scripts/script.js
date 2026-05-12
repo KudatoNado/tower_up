@@ -68,6 +68,7 @@ bgImg.onload = () => {
 
 function animate() {
    speed += 0.001;
+   
 
    if (isGameOver) return;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -107,7 +108,7 @@ function startGame() {
   animate();
 
   
-  setInterval(()=>{ },1000); 
+  
   
   
 
@@ -189,6 +190,7 @@ document.addEventListener("keydown", (e) => {
         y_vnie_R = -100;    
         playerX = 0;        
         playerY = 600;
+        dinoImg.src = "../game/img/nps/dino01.png";
         
         animate();          
         return;             

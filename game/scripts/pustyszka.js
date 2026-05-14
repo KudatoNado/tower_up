@@ -1,3 +1,5 @@
+
+//идеи для игры
 // Нужно хранить у персонажа:
 // x, y - позиция
 // vx, vy - скорость по X и Y
@@ -7,7 +9,7 @@
 // И на каждом кадре:
 // очищаешь canvas
 // обновляешь логику
-// рисуешь все заново
+// рисуешь все заново   готово
 
 // 1. Движение персонажа
 // Персонаж:
@@ -545,3 +547,155 @@ const game = {
 // const ctx = canvas.getContext("2d");
 
 
+
+//конец идей для игры
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const registration = async (event) => {
+  event.preventDefault();
+
+  const name = document.getElementById("register-name").value;
+  const password = document.getElementById("register-password").value;
+
+  const response = await fetch("/registration", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name,
+      password,
+    }),
+  });
+
+  const data = await response.json();
+
+  console.log(data);
+
+  if (response.ok) {
+    alert("Registration successful");
+  } else {
+    alert(data.message);
+  }
+};
+
+document
+  .getElementById("form-registration")
+  .addEventListener("submit", registration);
+
+
+
+
+
+
+
+
+
+
+
+  const password = document.getElementById("password").value;
+  const checkPassword = document.getElementById("check-password").value;
+
+
+
+
+  if (password.length < 8) {
+    alert("Пароль должен содержать минимум 8 символов");
+    return;
+  }
+
+
+
+
+
+
+  if (password !== checkPassword) {
+    alert("Пароли не совпадают");
+    return;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //конец базы и регистрации

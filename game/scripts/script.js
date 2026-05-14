@@ -67,7 +67,7 @@ bgImg.onload = () => {
 //key
 
 function animate() {
-   speed += 0.001;
+   speed += 0.01;
    
 
    if (isGameOver) return;
@@ -152,7 +152,7 @@ function startGame() {
 //awsd
 document.addEventListener("keydown", (e) => {
   const step_x = 370;
-  const step_y = 150;
+  const step_y = 1;
 
   if (e.key === "ArrowLeft") 
     {
@@ -211,7 +211,7 @@ sczot.appendChild.main_block;
 function updt() {
   points++;
   sczot.textContent =`${points.toString()}`;
-  console.log(points);
+ 
 }
 updt();
 let timerId = setInterval(() => {

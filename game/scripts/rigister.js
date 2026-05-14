@@ -16,120 +16,90 @@ text.addEventListener('click', function () {
  cancelButon = loginForm.reset();
  cancelButon.addEventListener('click', function(){
      
- })
+ });
+
+ 
+
+ const login = async (event) => {
+  event.preventDefault();
+
+  const name = document.getElementById("login").value;
+  const password = document.getElementById("password").value;
+
+  const response = await fetch("/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name,
+      password,
+    }),
+  });
+
+  const data = await response.json();
+
+  console.log(data);
+
+  if (response.ok) {
+    alert("Login successful");
+  } else {
+    alert(data.message);
+  }
+};
+
+document
+  .getElementById("login_form")
+  .addEventListener("submit", login);
 
 
 
-
-
-
-
-
-
-
- const form = document.querySelector('.trip-form');
-const tripType = document.getElementById("one-way");
-const roundTrip = document.getElementById("round-trip");
-const from = document.querySelector(".from-place");
-const to = document.getElementById("to-place");
-const depart = document.getElementById("depart");
-const backDestination = document.getElementById("return");
-const adults = document.getElementById("adults");
-const children = document.getElementById("children");
-const infants = document.getElementById("infants");
-const planeClass = document.getElementById("plane-class");
-
-form.addEventListener("submit", async (e) => { 
-    e.preventDefault();
-
-    // const fd = new FormData(form);
-    
-    
-    // const payload = {
-    //     tripType: tripType.value,
-    //     roundTrip: roundTrip.value,
-    //     from: from.value,
-    //     to: to.value,
-    //     depart: depart.value,
-    //     backDestination: backDestination.value,
-    //     adults: adults.value,
-    //     children: children.value,
-    //     infants: Number(fd.get("infants")), 
-    //     planeClass: planeClass.value
-    // };
-
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-async function createBooking() {
-    const url = '/booking';
-    
-    const payload = {
-        tripType: tripType.value,
-        roundTrip: roundTrip.value,
-        from: from.value,
-        to: to.value,
-        depart: depart.value,
-        backDestination: backDestination.value,
-        adults: adults.value,
-        children: children.value,
-        infants: Number(fd.get("infants")), 
-        planeClass: planeClass.value
-    };
-
-    console.log('Check payload data:', payload);
-
+  const registration = async (event) => {
+    event.preventDefault();
+  
+    const name = document.getElementById("login").value;
+    const password = document.getElementById("password").value;
+    const repeatPassword = document.getElementById("repeat-password").value;
+  
+    if (password.length < 8) {
+      alert("Пароль должен содержать минимум 8 символов");
+      return;
+    }
+  
+    if (password !== repeatPassword) {
+      alert("Пароли не совпадают");
+      return;
+    }
+  
     try {
-      const response = await fetch(url, {
-        method: 'POST', 
+      const response = await fetch("/registration", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json' 
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(payload) 
+        body: JSON.stringify({
+          name,
+          password,
+        }),
       });
   
+      const data = await response.json();
+  
+      console.log(data);
+  
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(data.message);
       }
   
-      const result = await response.json(); 
-      console.log('Success:', result);
-    } catch (error) {
-      console.error('Error:', error); 
-    }
-  }
-//example GET-request
-async function getData() {
-    const url = "https://example.org/products.json";
-    try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error(`Response status: ${response.status}`);
-      }
+      alert("Регистрация успешна");
   
-      const result = await response.json();
-      console.log(result);
     } catch (error) {
-      console.error(error.message);
+      console.error(error);
+      alert("Ошибка регистрации");
     }
-  }
+  };
+  
+  document
+    .getElementById("registration-form")
+    .addEventListener("submit", registration);
+

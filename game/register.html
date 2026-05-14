@@ -17,32 +17,27 @@
       <img src="./game/img/block.png">
     </div> -->
     <div class="front_code">
-        <form class="login_form">
+        <form class="login_form" id="registration-form" onclick="registration()">
             <div class="text " ><p class="shrift">tower up</p></div>
-            <div class="rovny_area"><input class = "cell" name="login"  placeholder="login" required /></div>
-            <div class="rovny_area"><input class = "cell"name="password" type="password"  placeholder="create a password" required /></div>
+            <div class="rovny_area">
+                <input class = "cell" name="login"  id="login" placeholder="login" required />
+            </div>
+            <div class="rovny_area">
+                <input class = "cell"name="password" type="password" id="password"  placeholder="create a password" required />
+                <a class="eye" id="text">◡</a>
+            </div>
             
-            <div class="rovny_area"><input class = "cell"name="password" type="text"  placeholder="repeat password" required /></div>
+            <div class="rovny_area">
+                <input class = "cell" name="repeat-password" id="repeat-password" type="text"  placeholder="repeat password" required />
+            </div>
            <div class="login_form_buttons_group" >
-                
-                
                 <button class="button">save</button>
             </div>
         </form>
             
-            
-        
+        <script src="../game/scripts/rigister.js"></script>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
 
 </body>
 </html>

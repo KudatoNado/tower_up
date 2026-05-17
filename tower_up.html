@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="game\stile\sign_up.css">
+    <link rel="stylesheet" href="game/stile/sign_up.css">
     <title>tower up</title>
 </head>
 <body>
@@ -17,7 +17,7 @@
       <img src="./game/img/block.png">
     </div> -->
     <div class="front_code">
-        <form class="login_form" id="login_form" onclick="login()">
+        <form class="login_form" id="login_form">
             <div class="text " ><p class="shrift">tower up</p></div>
 
             <div class="rovny_area"><input class = "cell" id="login" name="login"  placeholder="login" required /></div>
@@ -25,17 +25,17 @@
            <div class="rovny_area kostyl">
             <input class = "cell" id="password" name="password" type="password"  placeholder="pasword" required />
 
-            <a class="eye" id="text">◡</a>
+            <button type="button" class="eye" id="text">◡</button>
            
             </div>
        
            <div class="login_form_buttons_group" >
                 
-                <a class="button">Continue</a>
-                <button class="button" id="cancel">cancel</button>
+                <button type="button" class="button" onclick="login()">Continue</button>
+                <button class="button" id="cancel" type="button">cancel</button>
             </div>
         </form>
-            <a class="regist_link" href="game\register.html">register</a>
+            <a class="regist_link" href="game/register.html">register</a>
             
         
     </div>

@@ -6,7 +6,7 @@ const path = require("path");
 const PORT = 3000;
 const app = express();
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(__dirname));
 
 const dbConfig = {
   connectionString:
@@ -50,7 +50,7 @@ app.post("/login", async (req, res) => {
       .input("password", sql.VarChar, password)
       .query(`
         SELECT * FROM dbo.user
-        WHERE name = @name AND password = @password
+        WHERE login = @login AND password = @password
       `);
 
     if (result.recordset.length === 0) {

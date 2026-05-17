@@ -152,7 +152,7 @@ function startGame() {
 //awsd
 document.addEventListener("keydown", (e) => {
   const step_x = 370;
-  const step_y = 1;
+  const step_y = 150;
 
   if (e.key === "ArrowLeft") 
     {

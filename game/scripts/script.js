@@ -67,7 +67,7 @@ bgImg.onload = () => {
 //key
 
 function animate() {
-   speed += 0.01;
+   speed += 0.0001;
    
 
    if (isGameOver) return;
@@ -247,6 +247,26 @@ function stone_l() {
 }
 
 
+function stone_random(){
+   if (!showSecondStone) return;
+
+   if (random_bool){
+    stone();
+   }else{
+    stone_l();
+   }
+
+
+   if (y_vnie > canvas.height || y_vnie_R > canvas.height) {
+        y_vnie = -100;  
+        y_vnie_R = -100;
+        
+        random_bool = Math.random() < 0.5; 
+    }
+
+}
+//stone animation
+
 
 
 
@@ -268,6 +288,11 @@ function checkCollision() {
         }
     }
 }
+
+
+
+
+
 
 function endGame() {
     isGameOver = true;
@@ -301,21 +326,3 @@ function endGame() {
 
 
 
-function stone_random(){
-   if (!showSecondStone) return;
-
-   if (random_bool){
-    stone();
-   }else{
-    stone_l();
-   }
-
-
-   if (y_vnie > canvas.height || y_vnie_R > canvas.height) {
-        y_vnie = -100;  
-        y_vnie_R = -100;
-        
-        random_bool = Math.random() < 0.5; 
-    }
-
-}

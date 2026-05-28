@@ -36,7 +36,7 @@ let random_bool = false;
 let isGameOver = false;
 
 
-let czeker = true;/*naczalo igry nie zabidz izmenit "true" na "false"*/
+let czeker = true;
 let points = 0;
 
 //const speed

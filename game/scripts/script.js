@@ -45,6 +45,15 @@ let speed = 1;
 //cons speed
 
 
+//level
+let easy =3.5;
+let normal =5.5;
+let hard =8;
+let level = easy;
+let levelNAME = "difficult: easy";
+//level
+
+
 //start, size nip
 let playerX = 0;
 let playerY = 600;
@@ -178,22 +187,23 @@ document.addEventListener("keydown", (e) => {
     playerY = canvas.height - playerHeight;
   }
   
-
+if (e.key === "1" && isGameOver) {
+    level = easy;  
+    levelNAME = "difficult: esey";
+  }
+  if (e.key === "2" && isGameOver) {
+    level = normal; 
+    levelNAME = "difficult: normal";
+  }
+  if (e.key === "3" && isGameOver) {
+    level = hard;   
+    levelNAME = "difficult: hard";
+  }
 
 
   if (e.key === "Enter" && isGameOver) {
-        isGameOver = false; 
-        czeker = true;   
-        points = 0;         
-        speed = 1;         
-        y_vnie = -100;     
-        y_vnie_R = -100;    
-        playerX = 0;        
-        playerY = 600;
-        dinoImg.src = "../game/img/nps/dino01.png";
-        
-        animate();          
-        return;             
+        resetGame();
+                   
     }
 
 
@@ -230,7 +240,7 @@ let timerId = setInterval(() => {
 function stone() {
     if (showSecondStone) {
         ctx.drawImage(stoneImg, dengerX, y_vnie, 200, 200);
-        y_vnie += speed + 5;
+        y_vnie += speed + level;
         
     }
 }
@@ -241,7 +251,7 @@ function stone_l() {
     if (showSecondStone) {
         
         ctx.drawImage(stoneImg, dengerXa, y_vnie_R, 200, 200);
-        y_vnie_R += speed + 5;
+        y_vnie_R += speed + level;
         
     }
 }
@@ -301,9 +311,10 @@ function endGame() {
     
     
     ctx.fillStyle = "white";
-    ctx.font = "bold 40px Arial";
+    ctx.font = " 40px Arial";
     ctx.textAlign = "center";
     ctx.fillText("Game over!", canvas.width / 2, canvas.height / 2);
+    ctx.fillText(levelNAME, canvas.width / 2, canvas.height / 1.5)
 }
 
 
@@ -318,11 +329,10 @@ function endGame() {
     y_vnie_R = -100;
     playerX = 0;
     playerY = 600;
-    
+    dinoImg.src = "../game/img/nps/dino01.png";
     sczot.textContent = "0";
     animate(); 
   }
-
 
 
 

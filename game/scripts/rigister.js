@@ -94,3 +94,4 @@ const regForm = document.getElementById("registration-form");
 if (regForm) {
   regForm.addEventListener("submit", registration);
 }
+
